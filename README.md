@@ -7,13 +7,11 @@ Loan approval decisions depend on many factors-income, credit history, loan amou
 <img width="468" height="44" alt="image" src="https://github.com/user-attachments/assets/0dad5e1f-4f2c-4778-87f0-00bc333ce427" />
 
 🗃️ Data Set Description
-* Source: 
-* Size:
+* Source: [loan_approval_dataset](http://kaggle.com) 
+* Size: 4,269
 * Target variable: loan_status(1= Approved/0= Rejected)
 * Feature Variables: loan_id, no_of_dependents, education, self_employed, income_annum, loan_amount, loan_term, cibil_score, ressidential_assets_value, commercial_assets_value, luxury_assets_value, bank_asset_value.
    
-🎯 
-
 🧰 Tools and Libraries
 Python 3.12
 NumPy
@@ -22,14 +20,28 @@ Matplotlib
 Seaborn
 Scikit-learn
 
-🔄 Project Workflow
-🧹 Data Cleaning and Preprocessing:
+🔄 #Project Workflow
+🧹 ##Data Cleaning and Preprocessing:
 Handled missing values, Fixed inconsistent enteries, Address outlliers
 
-🚧 Exploratory Data Analysis (EDA)
-Examined feature distribution, class balance, and correlations with the target variable
+🚧 ##Exploratory Data Analysis (EDA)
+The following EDA steps were performed to understand the dataset before modeling:
+
+•	Loan Status Distribution: Checked class balance between approved and rejected loans
+•	Numerical Feature Visualization: Histograms to understand distributions of income, loan amount, and assets
+•	Outlier Detection: Boxplots on numerical columns to identify extreme values
+•	Outcome Proportionality: Pie chart showing approval vs rejection percentages
+•	Missing Values Analysis: Heatmap and count check — no missing values found
+•	Categorical vs Loan Status: Countplots for education and self_employed against loan_status
+•	Numerical vs Loan Status: Boxplots comparing feature distributions across approved and rejected
+•	Correlation Heatmap: Heatmap of all numerical feature correlations
+
+
+
 
 🎯 Pre-Processing
+Encoded categorical variables, scaled numerical features, split data into train/test sets
+
 
 Feature Engineering
 I removed the Customer_ID column as it serves as a unique identifier with no statistical relationship to the target variable (Claim). Removing non-predictive identifiers prevents model overfitting and reduces computational noise."
@@ -132,7 +144,8 @@ Key Finding: While Logistic Regression provided a solid foundation and it was co
 
 Overfitting and Validation To ensure this wasn't just a "lucky guess," iperformed 5-Fold Cross-Validation.
 
-Verification: The model showed consistent scores across all folds, proving it is Robust and will work on new, unseen buildings in the future, not just the ones in our training set. | Model | Accuracy | Precision | Recall | F1 Score | |-----------------------------|----------|-------------|----------|-----------| | Logistic Regression | 0.713687 | 0.405159 | 0.544898 | 0.464752 | | Random Forest | 0.716015 | 0.402913 | 0.508163 | 0.449458 |
+Verification: The model showed consistent scores across all folds, proving it is Robust and will work on new, unseen buildings in the future, not just the ones in our training set.
+| Model | Accuracy | Precision | Recall | F1 Score | |-----------------------------|----------|-------------|----------|-----------| | Logistic Regression | 0.713687 | 0.405159 | 0.544898 | 0.464752 | | Random Forest | 0.716015 | 0.402913 | 0.508163 | 0.449458 |
 | XGBoost | 0.784451 | 0.577143 | 0.206122 | 0.303759 |
 
 Prediction Chat
