@@ -1,18 +1,21 @@
 # Loan Approval Prediction
 This project builds a machine learning model to predict whether a loan application will be approved or rejected based on applicant financial data and loan attributes. It is a binary classification problem using supervised learning techniques built end-to-end in Python: data cleaning, exploratory data analysis, preprocessing, model training, and evaluation.
 
-📌 Case Study Overview
+## 📌Case Study Overview 
+
 Loan approval decisions depend on many factors-income, credit history, loan amount, employment status, and more. This project builds and compares several classification models to predict approval outcomes, with the goal of identifying the most reliable model for this kind of structured/tabular prediction task
 
 <img width="468" height="44" alt="image" src="https://github.com/user-attachments/assets/0dad5e1f-4f2c-4778-87f0-00bc333ce427" />
 
-🗃️ Data Set Description
+## Data Set Description 
+
 * Source: [loan_approval_dataset](http://kaggle.com) 
 * Size: 4,269
 * Target variable: loan_status(1= Approved/0= Rejected)
 * Feature Variables: loan_id, no_of_dependents, education, self_employed, income_annum, loan_amount, loan_term, cibil_score, ressidential_assets_value, commercial_assets_value, luxury_assets_value, bank_asset_value.
    
-🧰 Tools and Libraries
+## 🧰 Tools and Libraries
+
 Python 3.12
 NumPy
 Pandas
@@ -20,22 +23,26 @@ Matplotlib
 Seaborn
 Scikit-learn
 
-🔄 # Project Workflow
-🧹 ## Data Cleaning and Preprocessing:
+# 🔄 Project Workflow
+
+## 🧹 Data Cleaning and Preprocessing:
 Handled missing values, Fixed inconsistent enteries, Address outlliers
 
-🚧 ##Exploratory Data Analysis (EDA)
+## 🚧 Exploratory Data Analysis (EDA)
+
 The following EDA steps were performed to understand the dataset before modeling:
 
-•	Loan Status Distribution: Checked class balance between approved and rejected loans
-•	Numerical Feature Visualization: Histograms to understand distributions of income, loan amount, and assets
-•	Outlier Detection: Boxplots on numerical columns to identify extreme values
-•	Outcome Proportionality: Pie chart showing approval vs rejection percentages
-•	Missing Values Analysis: Heatmap and count check — no missing values found
-•	Categorical vs Loan Status: Countplots for education and self_employed against loan_status
-•	Numerical vs Loan Status: Boxplots comparing feature distributions across approved and rejected
-•	Correlation Heatmap: Heatmap of all numerical feature correlations
+* Loan Status Distribution: Checked class balance between approved and rejected loans
+* Numerical Feature Visualization: Histograms to understand distributions of income, loan amount, and assets
+* Outlier Detection: Boxplots on numerical columns to identify extreme values
+* Outcome Proportionality: Pie chart showing approval vs rejection percentages
+* Missing Values Analysis: Heatmap and count check — no missing values found
+* Categorical vs Loan Status: Countplots for education and self_employed against loan_status
+* Numerical vs Loan Status: Boxplots comparing feature distributions across approved and rejected
+* Correlation Heatmap: Heatmap of all numerical feature correlations
 
+### 🚧 Key EDA Findings
+|-----------------------|--------------------------------------|-------------------------------|
 
 
 
