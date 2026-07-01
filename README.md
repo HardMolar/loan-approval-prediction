@@ -20,8 +20,8 @@ Matplotlib
 Seaborn
 Scikit-learn
 
-🔄 #Project Workflow
-🧹 ##Data Cleaning and Preprocessing:
+🔄 # Project Workflow
+🧹 ## Data Cleaning and Preprocessing:
 Handled missing values, Fixed inconsistent enteries, Address outlliers
 
 🚧 ##Exploratory Data Analysis (EDA)
