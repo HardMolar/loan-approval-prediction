@@ -5,8 +5,6 @@ This project builds a machine learning model to predict whether a loan applicati
 
 Loan approval decisions depend on many factors-income, credit history, loan amount, employment status, and more. This project builds and compares several classification models to predict approval outcomes, with the goal of identifying the most reliable model for this kind of structured/tabular prediction task
 
-<img width="468" height="44" alt="image" src="https://github.com/user-attachments/assets/0dad5e1f-4f2c-4778-87f0-00bc333ce427" />
-
 ## 📊 Data Set Description 
 
 * Source: [loan_approval_dataset](http://kaggle.com) 
@@ -134,6 +132,7 @@ Three models were trained and compared to identify the best performer:
 |Logistics Regression| 425              | 743               | 46                | 67                |
 |Radom Forest        | 469              | 751               | 2                 | 59                |
 |XGBoost             | 455              | 756               | 16                | 54                |
+
 In a real banking context, False Positives (approving loans that should be rejected) are the most costly error. Random Forest virtually eliminates this with only 2 false approvals(Positives) — making it the safest and most reliable model
 
 ## 📌 Final Model Selection
