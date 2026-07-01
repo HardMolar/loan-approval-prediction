@@ -1,13 +1,13 @@
 # Loan Approval Prediction
 This project builds a machine learning model to predict whether a loan application will be approved or rejected based on applicant financial data and loan attributes. It is a binary classification problem using supervised learning techniques built end-to-end in Python: data cleaning, exploratory data analysis, preprocessing, model training, and evaluation.
 
-## 📌Case Study Overview 
+ ## 📌Case Study Overview 
 
 Loan approval decisions depend on many factors-income, credit history, loan amount, employment status, and more. This project builds and compares several classification models to predict approval outcomes, with the goal of identifying the most reliable model for this kind of structured/tabular prediction task
 
 <img width="468" height="44" alt="image" src="https://github.com/user-attachments/assets/0dad5e1f-4f2c-4778-87f0-00bc333ce427" />
 
-## Data Set Description 
+## 📊 Data Set Description 
 
 * Source: [loan_approval_dataset](http://kaggle.com) 
 * Size: 4,269
@@ -16,17 +16,19 @@ Loan approval decisions depend on many factors-income, credit history, loan amou
    
 ## 🧰 Tools and Libraries
 
-Python 3.12
-NumPy
-Pandas
-Matplotlib
-Seaborn
-Scikit-learn
+* Python 3.12
+* NumPy
+* Pandas
+* Matplotlib
+* Seaborn
+* Scikit-learn
 
 # 🔄 Project Workflow
 
 ## 🧹 Data Cleaning and Preprocessing:
-Handled missing values, Fixed inconsistent enteries, Address outlliers
+* Handled missing values
+* Fixed inconsistent enteries
+* Address outlliers
 
 ## 🚧 Exploratory Data Analysis (EDA)
 
@@ -41,13 +43,108 @@ The following EDA steps were performed to understand the dataset before modeling
 * Numerical vs Loan Status: Boxplots comparing feature distributions across approved and rejected
 * Correlation Heatmap: Heatmap of all numerical feature correlations
 
-### 🚧 Key EDA Findings
-|-----------------------|--------------------------------------|-------------------------------|
+ ### 🚧 Key EDA Findings
+ #### cibil_score
+ * Findings: Median ~700 for approved vs ~420 for rejected. Strongest separator
+ * Decision: Keep — priority feature
+ #### income_annum
+ * Findings: Almost identical distribution for approved and rejected
+ * Decision: Keep — weak alone, useful in ratios
+ #### loan_amount
+ * Findings: Similar distributions across both classes
+ * Decision: Keep — use in ratio features
+ #### All asset features
+ * Findings: Near identical distributions for both classes
+ * Decision: Keep — combine into total_assets
+ #### education
+ * Findings: No meaningful difference in approval rates
+ * Decision: Drop — weak predictor
+ #### self_employed
+ * Findings: No meaningful difference in approval rates
+ * Decision: Drop — weak predictor
+ #### no_of_dependants
+ * Findings: Near zero correlation with all features
+ * Decision: Drop — weak predictor
+ #### loan_term
+ * Findings: Near zero correlation with all features
+ * Decision: Drop — weak predictor
+ #### income_annum vs loan_amount
+ * Findings: Correlation of 0.93 — multicollinearity risk
+ * Decision: Engineer ratio instead
+ #### income_annum vs luxury_assets
+ * Findings: Correlation of 0.93 — highly redundant
+ * Decision: Combine into engineered features
+
+## 📊 Data Pre-Processing
+
+### Data Cleaning
+* Reloaded dataset fresh from CSV to avoid corrupted state
+* Stripped leading and trailing spaces from all column names using .str.strip()
+* Stripped spaces from all string/object column values to fix encoding issues
+* Encoded target variable: loan_status mapped to Approved=1, Rejected=0
+
+### Encoding
+Three new features were engineered from existing ones to improve model signal:
+
+#### income_to_loan_ratio
+* Formular: income_annum/loan_amount
+* Purpose: Can the applicant afford the loan?
+#### total_assets
+* Formular: Sum of all 4 asset columns
+* Purpose: Overall financial strength
+#### assets_to_loan_ratio
+* Formular: total_assets / loan_amount
+* Purpose: Is the applicant sufficiently backed?
+
+### Dropped Features
+The following features were dropped based on EDA insights:
+* education — no meaningful difference in approval rates between Graduate and Not Graduate
+* self_employed — approval rates identical for both employed and self-employed
+* no_of_dependents — near zero correlation with loan_status
+* loan_term — near zero correlation with loan_status
+
+### Train/Test Split and Scaling
+* Train/Test Split: 70% training, 30% test (random_state=42)
+* Scaling: StandardScaler applied — fit on training data only, transform on both sets
+* Scaler saved as scaler.pkl alongside the model to ensure consistent scaling at inference
+
+## Model Training
+Three models were trained and compared to identify the best performer:
+### Logistic Regression
+* Purpose: Baseline linear model — simple and interpretable
+### Random Forest
+* Purpose: Ensemble of decision trees — handles non-linearity well
+### XGBoost
+* Purpose: Gradient boosting — high performance on tabular data
+
+## Model Evaluation Result
+### Accuracy Comparison
+|--------------------|------------------|-------------------|---------------------------|
+| Model              | Accuracy         |F1-Score(Weighted) | Verdict                   |
+|--------------------|------------------|-------------------|---------------------------|
+|Logistics Regression| 91.18%           | 0.91              | Goood Baseline            |
+|Radom Forest        | 95.24%           | 0.95              | Best Overall              |
+|XGBoost             | 94.54%           | 0.95              | Strong runner-up          |
+|--------------------|------------------|-------------------|---------------------------|
+
+### Confusion Matrix Analysis
 
 
 
-🎯 Pre-Processing
-Encoded categorical variables, scaled numerical features, split data into train/test sets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Feature Engineering
