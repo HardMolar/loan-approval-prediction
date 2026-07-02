@@ -1,4 +1,5 @@
-# Loan Approval Prediction
+# Loan Approval Prediction <img width="191" height="20" alt="image" src="https://github.com/user-attachments/assets/a33028ce-6284-40bc-8819-6391177f0c4b" />
+
 This project builds a machine learning model to predict whether a loan application will be approved or rejected based on applicant financial data and loan attributes. It is a binary classification problem using supervised learning techniques built end-to-end in Python: data cleaning, exploratory data analysis, preprocessing, model training, and evaluation.
 
  ## 📌Case Study Overview 
